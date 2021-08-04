@@ -22,6 +22,7 @@ class CountdownTimer {
       this.mins.textContent = mins < 10 ? `0${mins}` : mins;
       this.hours.textContent = hours < 10 ? `0${hours}` : hours;
       this.days.textContent = days < 10 ? `0${days}` : days;
+
       if (time < 0) {
         clearInterval(timerInteval);
         this.secs.textContent = '00';
