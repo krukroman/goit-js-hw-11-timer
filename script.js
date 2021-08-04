@@ -9,7 +9,7 @@ class CountdownTimer {
   }
 
   action() {
-    setInterval(() => {
+    let timerInteval = setInterval(() => {
       let currentDate = new Date();
       const time = this.targetDate - currentDate;
       const secs = Math.floor((time % (1000 * 60)) / 1000);
@@ -22,6 +22,13 @@ class CountdownTimer {
       this.mins.textContent = mins < 10 ? `0${mins}` : mins;
       this.hours.textContent = hours < 10 ? `0${hours}` : hours;
       this.days.textContent = days < 10 ? `0${days}` : days;
+      if (time < 0) {
+        clearInterval(timerInteval);
+        this.secs.textContent = '00';
+        this.mins.textContent = '00';
+        this.hours.textContent = '00';
+        this.days.textContent = '00';
+      }
     }, 1000);
   }
 }
