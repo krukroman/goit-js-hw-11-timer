@@ -18,19 +18,27 @@ class CountdownTimer {
         (time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
       );
       const days = Math.floor(time / (1000 * 60 * 60 * 24));
-      this.secs.textContent = secs < 10 ? `0${secs}` : secs;
-      this.mins.textContent = mins < 10 ? `0${mins}` : mins;
-      this.hours.textContent = hours < 10 ? `0${hours}` : hours;
-      this.days.textContent = days < 10 ? `0${days}` : days;
+      this.changeValues(secs, mins, hours, days);
 
       if (time < 0) {
         clearInterval(timerInteval);
-        this.secs.textContent = '00';
-        this.mins.textContent = '00';
-        this.hours.textContent = '00';
-        this.days.textContent = '00';
+        this.resetValues();
       }
     }, 1000);
+  }
+
+  changeValues(secs, mins, hours, days) {
+    this.secs.textContent = secs < 10 ? `0${secs}` : secs;
+    this.mins.textContent = mins < 10 ? `0${mins}` : mins;
+    this.hours.textContent = hours < 10 ? `0${hours}` : hours;
+    this.days.textContent = days < 10 ? `0${days}` : days;
+  }
+
+  resetValues() {
+    this.secs.textContent = '00';
+    this.mins.textContent = '00';
+    this.hours.textContent = '00';
+    this.days.textContent = '00';
   }
 }
 
